@@ -1,0 +1,45 @@
+
+
+  redis:
+      image: redis:alpine
+      container_name: myapp-redis
+      command: redis-server --appendonly yes --requirepass "${REDIS_PASSWORD}"
+      volumes:
+      - ./data/redis:/data
+      ports:
+        - "8002:6379"
+
+.............................................
+
+version: "3.7"
+services:
+  # Redis Server for Cache
+  redis-cache:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - cache:/data
+
+volumes:
+  cache:
+    driver: local
+
+
+.............................................
+
+final
+.............
+
+  redis:
+      image: redis:alpine
+      container_name: myapp-redis
+      command: redis-server --appendonly yes --requirepass "${REDIS_PASSWORD}"
+      volumes:
+      - ./data/redis:/data
+      ports:
+        - "6379:6379"
+
+
