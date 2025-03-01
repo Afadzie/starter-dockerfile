@@ -60,16 +60,8 @@ RUN pecl install redis && docker-php-ext-enable redis
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Create system user
-RUN useradd -G www-data,root -u ${uid:-1000} -d /home/${user:-www-data} ${user:-www-data} && \
-    mkdir -p /home/${user:-www-data}/.composer && \
-    chown -R ${user:-www-data}:${user:-www-data} /home/${user:-www-data}
-
 # Set working directory
 WORKDIR /var/www
-
-# Change ownership
-RUN chown -R ${uid:-1000}:${uid:-1000} /var/www /var/log /etc/supervisor/conf.d/ $PHP_INI_DIR/conf.d/ /tmp
 
 COPY . .
 

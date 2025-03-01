@@ -1,6 +1,6 @@
 services:
 
-  laravel-docker:
+  zigma-auth:
     container_name: zigma-auth-app
     build: .
     restart: unless-stopped
