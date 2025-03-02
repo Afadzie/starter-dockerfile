@@ -11,7 +11,6 @@ up:
 composer-update:
 	docker exec zigma-auth-app bash -c "composer update"
 data:
-    docker exec zigma-auth-app bash -c "php artisan vendor:publish --tag=laravel-assets --ansi --force"
 	docker exec zigma-auth-app bash -c "php artisan migrate"
 	docker exec zigma-auth-app bash -c "php artisan db:seed"
 

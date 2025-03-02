@@ -1,0 +1,175 @@
+
+
+composer create-project laravel/laravel=10 zigma-auth-app --prefer-dist
+
+php artisan sail:install
+
+curl -s "https://laravel.build/zigma-auth-app?with=mysql,redis&devcontainer" | bash
+
+curl -s https://laravel.build/zigma-auth-app | bash
+
+wsl --setdefault Ubuntu
+wsl --setdefault docker-desktop
+
+./vendor/bin/sail up
+
+https://dev.to/jeromew90/how-to-start-laravel-project-with-the-shortcut-sail-up-using-bashrc-31dl
+
+https://www.youtube.com/results?search_query=install+laravel+11+sail+on+windows
+
+https://www.youtube.com/watch?v=S_z03NUUiBk&t=193s
+
+sudo find {laravel-folder}/ -type f -exec chmod 644 {} ;
+
+sudo find {laravel-folder}/ -type d -exec chmod 755 {} ;
+
+sudo chmod -R 777 {laravel-folder}/storage
+
+sudo chmod -R 777 {laravel-folder}/bootstrap/cache/
+
+.......................................
+
+sudo find "zigma-auth-app/" -type f -exec chmod 777 {} \;
+
+sudo find "zigma-auth-app/" -type d -exec chmod 777 {} \;
+
+sudo chmod -R 777 zigma-auth-app/storage
+
+sudo chmod -R 777 zigma-auth-app/bootstrap/cache/
+
+https://www.youtube.com/watch?v=LFrBmvgamGI
+
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/var/www/html \
+    -w /var/www/html \
+    laravelsail/php82-composer:latest \
+    composer install --ignore-platform-reqs
+
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+
+
+sail composer require livewire/livewire
+
+ls -lh ~/.composer/composer.json
+
+sudo chown -R yourusername:yourusername ~/.composer/composer.json
+
+ls -lh ~/zigma-project/zigma-auth-app/composer.json
+
+sudo chown -R 777 sebastian:sebastian ~/zigma-project/zigma-auth-app/composer.json
+
+composer update --lock
+
+ Composer with --ignore-platform-req=ext-dom --ignore-platform-req=ext-xml --ignore-platform-req=ext-xmlwriter to temporarily ignore these required extensions.
+
+Use the option --with-all-dependencies (-W) to allow upgrades, downgrades and removals for packages currently locked to specific versions.
+
+
+sail composer install --ignore-platform-req=ext-dom --ignore-platform-req=ext-xml --ignore-platform-req=ext-xmlwriter
+
+sudo nano /etc/php/8.3/cli/php.ini
+
+sudo apt install php8.3-xml
+
+sudo chmod o+w ./storage/ -R
+
+sudo chown www-data:www-data -R ./storage
+
+sudo chown -R www-data:www-data /var/www
+
+  file_put_contents(/var/www/html/bootstrap/providers.php): Failed to open stream: Permission denied
+
+sudo chown -R www-data:www-data /var/www/html/bootstrap/providers.php
+
+1. $ sail artisan cache:clear
+
+2. $ sudo chmod -R 777 storage
+
+3. $ composer dump-autoload
+
+
+sail artisan cache:clear
+sail artisan config:clear
+sail artisan route:clear
+sail artisan view:clear
+
+docker exec -it your-container-name bash
+
+docker exec -it zigma-auth-app bash
+
+chmod -R 777 storage bootstrap/cache
+
+rm -rf zigma-auth-app
+
+mv old_directory_name new_directory_name
+
+mv zigma-auth laravel
+
+composer create-project laravel/laravel=10 --prefer-dist .
+
+composer create-project --prefer-dist laravel/laravel:^10 .
+
+composer create-project --prefer-dist laravel/laravel . "10.*"
+
+php artisan vendor:publish --tag=laravel-assets --ansi --force
+
+sudo find "zigma-auth-data/" -type f -exec chmod 777 {} \;
+
+sudo find "zigma-auth-data/" -type d -exec chmod 777 {} \;
+
+sudo chmod -R 777 zigma-auth-data/storage
+
+sudo chmod -R 777 zigma-auth-data/bootstrap/cache/
+
+composer require livewire/livewire:^2.1
+
+docker exec zigma-auth-app bash -c "composer require livewire/livewire"
+
+
+composer require laravel/breeze --dev
+
+docker exec zigma-auth-app bash -c "composer require laravel/breeze --dev"
+
+
+php artisan breeze:install
+
+docker exec zigma-auth-app bash -c "php artisan breeze:install"
+
+
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+
+
+apt-get install php8.3-mysql
+
+DB_HOST : mysql_db
+
+docker-compose down -v
+docker-compose up -d --build
+
+npm install --save-dev vite laravel-vite-plugin
+
+cd zigma-project/zigma-auth/zigma-auth-data
+
+php artisan migrate
+php artisan db:seed
+
+docker exec -it zigma-auth-data bash
+
+docker exec zigma-auth-app bash -c "php artisan migrate"
+docker exec zigma-auth-app bash -c "php artisan db:seed"
+
+
+
+
+
+
+
+
+
+
+
+

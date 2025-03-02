@@ -36,6 +36,12 @@ RUN apt-get update && apt-get install -y \
 RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - && \
     apt-get install -y nodejs
 
+# Update npm to the latest version
+RUN npm install -g npm@latest
+
+# Install Vite globally
+RUN npm install -g vite
+
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
